@@ -9,12 +9,22 @@ Cách chạy:
     python weather_function_calling.py
 """
 
+import sys
+
+# Ensure UTF-8 output on Windows console
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
+
 from google import genai
 from google.genai import types
 
 client = genai.Client()
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.5-flash"
 
 SYSTEM_INSTRUCTION = (
     "Bạn là trợ lý thời tiết thân thiện, trả lời bằng tiếng Việt tự nhiên. "

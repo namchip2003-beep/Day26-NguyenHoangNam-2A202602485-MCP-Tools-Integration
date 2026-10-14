@@ -13,13 +13,21 @@ Cách chạy (cần auth_server.py đang chạy ở terminal khác):
 from __future__ import annotations
 
 import asyncio
-
 import os
+import sys
+
+# Ensure UTF-8 output on Windows console
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
 
 from mcp import ClientSession
 from mcp.client.streamable_http import create_mcp_http_client, streamable_http_client
 
-SERVER_URL = "http://localhost:8000/mcp"
+SERVER_URL = os.environ.get("MCP_SERVER_URL", "http://127.0.0.1:8001/mcp")
 TOKEN = os.environ.get("MCP_AUTH_TOKEN", "dev-token-abc123")
 
 

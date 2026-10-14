@@ -5,6 +5,14 @@ Checks if all components are configured correctly
 """
 import os
 import sys
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
+
 from pathlib import Path
 
 def check_environment():

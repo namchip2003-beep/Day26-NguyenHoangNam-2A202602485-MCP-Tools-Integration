@@ -60,7 +60,7 @@
     },
     "weather-secure": {
       "transport": "streamable-http",
-      "url": "http://localhost:8000/mcp",
+      "url": "http://127.0.0.1:8000/mcp",
       "auth": {"type": "bearer", "token_env": "MCP_AUTH_TOKEN"}
     },
     "email-service": {
